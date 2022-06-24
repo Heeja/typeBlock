@@ -5,11 +5,14 @@
     "compilerOptions": {
         "outDir": "bulid",
         "target": "ES6",
-        "lib": ["ES6"],
+        "lib": [
+            "ES6"
+        ],
         // ES6 = Javascript version set
         // DOM = WEB API set
         "strict": true,
         // "allowJs": true, // TS, JS 같이 사용할 때 사용함.
         "esModuleInterop": true,
         "module": "CommonJS"
+    }
 }

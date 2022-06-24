@@ -21,3 +21,32 @@ class Block implements BlockShape {
         return crypto.createHash("sha256").update(toHash).digest("hex");
     }
 }
+
+class BlockChain {
+    private blocks: Block[]
+    constructor() {
+        this.blocks = [];
+    }
+    private getPrevHash() {
+        if (this.blocks.length === 0) return "";
+        return this.blocks[this.blocks.length - 1].hash;
+    }
+    public addBlock(data: string) {
+        const newBlock = new Block(this.getPrevHash(), this.blocks.length + 1, data);
+        this.blocks.push(newBlock);
+    }
+    public getBlock(){
+        return [...this.blocks];
+        // 현재 코드로는 배열에 접근하여 임의로 추가가 가능하다. 그래서 새로운 배열을 리턴해준다.
+    }
+}
+
+const blockchain = new BlockChain();
+
+blockchain.addBlock("First One");
+blockchain.addBlock("Second One");
+blockchain.addBlock("Third One");
+
+blockchain.getBlock().push(new Block("xxxx",11111,"hackeddddd"));
+
+console.log(blockchain.getBlock());
